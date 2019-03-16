@@ -10,14 +10,15 @@ export default class RecipeForm extends Component {
     }
 
     handleInputChange = (event) => {
-        const name = event.target.name;
+        const name = event.target.id;
         const value = event.target.value;
-      
-        this.setState({
+
+        this.setState(state => ({
             recipe: {
+                ...state.recipe,
                 [name]: value
             }
-        });
+        }));
     };
 
     render() {

@@ -7,30 +7,48 @@ export default class RecipeList extends Component {
     constructor(props) {
         super(props);
 
-        const recipes = [
-            {
-                id: 0,
-                title: 'Recipe One',
-                ingredients: ['ingredient one', 'ingredient two']
-            },
-            {
-                id: 1,
-                title: 'Recipe Two',
-                ingredients: ['ingredient three', 'ingredient four']
-            }
-        ]
-        const nextId = 2;
-
         this.state = {
-            recipes: recipes,
+            recipes: [],
             isRecipeFormActive: false,
             addOrEditRecipe: undefined,
             editedRecipe: undefined,
-            nextId: nextId
+            nextId: 0
         };
     }
 
-    generateNextRecipeId = (recipes) => (Math.min(recipes.map(r => r.id), 0) + 1);
+    componentDidMount() {
+        const recipesJson = this.loadRecipes();
+
+        if (recipesJson) {
+            this.setState({
+                recipes: JSON.parse(recipesJson)
+            });
+        }
+    }
+
+    loadRecipes() {
+        return window.localStorage.getItem("recipes-app");
+    }
+
+    saveRecipes(recipes) {
+        localStorage.setItem("recipes-app", JSON.stringify(recipes));
+    }
+
+    generateNextRecipeId = (recipes) => {
+        if (!recipes) return 0;
+
+        const ids = recipes.map(r => r.id).sort();
+
+        if (ids[0] !== 0) return 0;
+
+        let i = 0;
+        while (i + 1 < recipes.length) {
+            if (ids[i + 1] - ids[i] > 1) return ids[i] + 1;
+            i++;
+        }
+
+        return ids[i] + 1;
+    };
 
     showModal = () => {
         this.setState({ isRecipeFormActive: true });
@@ -48,20 +66,25 @@ export default class RecipeList extends Component {
             ingredients: event.target.ingredients.value.split(",").map(x => x.trim())
         }
 
-        this.setState(state => {
-            const recipeId = 
-                state.addOrEditRecipe === 'add' 
-                    ? this.generateNextRecipeId(state.recipes)
-                    : state.editedRecipe.id;
+        this.setState(
+            state => {
+                const recipeId = 
+                    state.addOrEditRecipe === 'add' 
+                        ? this.generateNextRecipeId(state.recipes)
+                        : state.editedRecipe.id;
 
-            recipe = {...recipe, ...{ id: recipeId }};
-            
-            const recipes = state.addOrEditRecipe === 'add'
-                ? state.recipes.concat(recipe)
-                : state.recipes.map(r => (r.id === recipeId ? recipe : r));
+                recipe = {...recipe, ...{ id: recipeId }};
+                
+                const recipes = state.addOrEditRecipe === 'add'
+                    ? state.recipes.concat(recipe)
+                    : state.recipes.map(r => (r.id === recipeId ? recipe : r));
 
-            return { recipes };
-        });
+                return { recipes };
+            },
+            () => {
+                this.saveRecipes(this.state.recipes);
+            }
+        );
 
         this.closeModal();
     };
@@ -93,7 +116,11 @@ export default class RecipeList extends Component {
     };
 
     deleteRecipe = (recipeId) => {
-        this.setState(state => ({recipes: state.recipes.filter(r => r.id !== recipeId)}));
+        this.setState(
+            state => ({recipes: state.recipes.filter(r => r.id !== recipeId)}),
+            () => {
+                this.saveRecipes(this.state.recipes);
+            });
     };
 
     render() {
