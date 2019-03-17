@@ -48,4 +48,10 @@
   
 .modal-body {
     padding-top: 0.25em;
-}  
+}
+
+.modal-title {
+    font-size: 1.2em;
+    border-bottom: 1px solid #4ab6e0;
+    padding-bottom: 5px;
+}

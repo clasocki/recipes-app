@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Recipe from './Recipe';
 import { Modal } from './Modal';
 import RecipeForm from './RecipeForm';
+import './RecipesList.css';
 
 export default class RecipeList extends Component {
     constructor(props) {
@@ -95,8 +96,8 @@ export default class RecipeList extends Component {
                 addOrEditRecipe: 'add',
                 editedRecipe: {
                     id: undefined,
-                    title: undefined,
-                    ingredient: undefined
+                    title: '',
+                    ingredients: ''
                 }
             })
         );
@@ -136,11 +137,14 @@ export default class RecipeList extends Component {
                             onDelete={() => this.deleteRecipe(recipe.id)} />)
                     )}
                 </div>
-                <button onClick={this.addRecipe}>Add recipe</button>
+                <div className="recipe-list-toolbar">
+                    <button className="button blue" onClick={this.addRecipe}>Add recipe</button>
+                </div>
                 <Modal
+                    title={this.state.addOrEditRecipe === 'add' ? 'Add recipe' : 'Edit recipe'}
                     closeModal={this.closeModal}
                     isOpen={this.state.isRecipeFormActive}>
-                        <RecipeForm 
+                        <RecipeForm
                             initialRecipe={this.state.editedRecipe}
                             onSubmit={this.onSubmitRecipe} />
                 </Modal>

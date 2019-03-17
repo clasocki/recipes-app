@@ -1,0 +1,75 @@
+.recipe-item {
+    border: 1px solid #4ab6e0;
+    border-radius: 5px;
+    margin: 3px;
+}
+
+.recipe-heading {
+    padding: 10px;
+    background: #4ab6e0;
+    text-align: center;
+    font-size: 1.5em;
+    color: black;
+    cursor: pointer;
+}
+
+.recipe-details {
+    background: #e7f5fb;
+}
+
+.recipe-ingredient-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.recipe-ingredient {
+    border: 1px solid #87ceeb;
+    background: #d0ecf7;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.recipe-ingredients-title {
+    font-weight: bold;
+    padding: 10px;
+    border-bottom: 1px solid #87ceeb;
+}
+
+.button {
+    cursor: pointer;
+    padding: 6px 18px;
+    border: 1px solid #bbb;
+    color: #fff;
+    margin: 0px 5px 5px 5px;
+
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 2px 2px -1px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .3) inset;
+    background-image: linear-gradient(to top, rgba(255,255,255,.3), rgba(255,255,255,0));
+}
+
+.button.red{
+    background-color: #ca3535;
+    border-color: #c43c35;
+}
+
+.button.red:hover{
+    background-color: #ee5f5b;
+}
+
+.button.red:active{
+    background: #c43c35;
+}
+
+.button.blue{
+    background-color: #269CE9;
+    border-color: #269CE9;
+}
+
+.button.blue:hover{
+    background-color: #70B9E8;
+}
+
+.button.blue:active{
+    background: #269CE9;
+}

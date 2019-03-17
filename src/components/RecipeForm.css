@@ -1,0 +1,42 @@
+.button.green{
+    background-color: #57a957;
+    border-color: #57a957;
+}
+
+.button.green:hover{
+    background-color: #62c462;
+}
+
+.button.green:active{
+    background: #57a957;
+}
+
+.button[disabled], .button[disabled]:hover, .button[disabled]:active{
+    border-color: #eaeaea;
+    background: #fafafa;
+    cursor: default;
+    position: static;
+    color: #999;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+.form-control {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #87ceeb;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.has-error {
+    border: 1px solid red;
+}
+
+.recipe-form {
+    border-radius: 5px;
+    background-color: #e7f5fb;
+    padding: 10px;
+}

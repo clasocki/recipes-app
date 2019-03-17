@@ -1,0 +1,8 @@
+.recipe-list {
+    border: 3px solid #2092bf;
+}
+
+.recipe-list-toolbar {
+    margin: 10px 10px 10px -5px;
+    text-align: left;
+}

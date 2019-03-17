@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import shortid from 'shortid';
+import './Recipe.css';
 
 export default class Recipe extends Component {
     constructor(props) {
@@ -19,16 +20,16 @@ export default class Recipe extends Component {
         return (
             <div className="recipe-details">
                 <div className="recipe-ingredients">
-                    <h4>Ingredients</h4>
-                    <ul>
+                    <div className="recipe-ingredients-title">Ingredients</div>
+                    <ul className="recipe-ingredient-list">
                         {ingredients.map(ingredient => (
-                            <li key={shortid.generate()}>{ingredient}</li>
+                            <li key={shortid.generate()} className="recipe-ingredient">{ingredient}</li>
                         ))} 
                     </ul>
                 </div>
                 <div className="recipe-toolbar">
-                    <button onClick={this.props.onDelete}>Delete</button>
-                    <button onClick={this.props.onEdit}>Edit</button>
+                    <button className="button red" onClick={this.props.onDelete}>Delete</button>
+                    <button className="button blue" onClick={this.props.onEdit}>Edit</button>
                 </div>
             </div>
         );

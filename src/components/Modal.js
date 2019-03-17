@@ -4,6 +4,7 @@ import './Modal.css';
 
 export const Modal = ({
     closeModal,
+    title,
     children,
     isOpen
 }) => {
@@ -26,6 +27,7 @@ export const Modal = ({
             className='modal-cover'
             onClick={onClickOutside}>
             <div className='modal-area' ref={setModalRef}>
+                <div className="modal-title">{title}</div>
                 <button
                     aria-label='Close Modal'
                     aria-labelledby='close-modal'
