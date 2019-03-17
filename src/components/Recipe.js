@@ -21,7 +21,7 @@ export default class Recipe extends Component {
             <div className="recipe-details">
                 <div className="recipe-ingredients">
                     <div className="recipe-ingredients-title">Ingredients</div>
-                    <ul className="recipe-ingredient-list">
+                    <ul className="recipe-ingredient-list" data-testid="ingredient-list">
                         {ingredients.map(ingredient => (
                             <li key={shortid.generate()} className="recipe-ingredient">{ingredient}</li>
                         ))} 
@@ -40,7 +40,7 @@ export default class Recipe extends Component {
 
         return (
             <div className="recipe-item">
-                <div className="recipe-heading" onClick={this.handleRecipeClick}>
+                <div className="recipe-heading" data-testid="recipe-item" onClick={this.handleRecipeClick}>
                     <div className="recipe-title">
                         {title}
                     </div>

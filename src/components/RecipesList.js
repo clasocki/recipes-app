@@ -127,7 +127,7 @@ export default class RecipeList extends Component {
     render() {
         return (
             <Fragment>
-                <div className="recipe-list">
+                <div className="recipe-list" data-testid="recipe-list">
                     {this.state.recipes.map(recipe =>
                         (<Recipe 
                             key={recipe.id}
@@ -138,7 +138,8 @@ export default class RecipeList extends Component {
                     )}
                 </div>
                 <div className="recipe-list-toolbar">
-                    <button className="button blue" onClick={this.addRecipe}>Add recipe</button>
+                    <button className="button blue" onClick={this.addRecipe} 
+                            data-testid="add-recipe-button">Add recipe</button>
                 </div>
                 <Modal
                     title={this.state.addOrEditRecipe === 'add' ? 'Add recipe' : 'Edit recipe'}

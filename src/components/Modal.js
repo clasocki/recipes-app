@@ -26,7 +26,7 @@ export const Modal = ({
             aria-modal='true'
             className='modal-cover'
             onClick={onClickOutside}>
-            <div className='modal-area' ref={setModalRef}>
+            <div className='modal-area' ref={setModalRef} data-testid='modal-window'>
                 <div className="modal-title">{title}</div>
                 <button
                     aria-label='Close Modal'

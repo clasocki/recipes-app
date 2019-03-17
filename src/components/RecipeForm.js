@@ -81,13 +81,14 @@ export default class RecipeForm extends Component {
         return (
             <div className="form-panel">
                 <FormErrors formErrors={this.state.formErrors} />
-                <form className="recipe-form" onSubmit={onSubmit}>
+                <form className="recipe-form" onSubmit={onSubmit} data-testid="recipe-form">
                     <div className="form-group">
                         <label htmlFor="title">Recipe</label>
                         <input type="text" 
                                className={`form-control ${this.errorClass(this.state.formErrors.title)}`} 
                                id="title" placeholder="Recipe name"
-                               value={this.state.recipe.title} onChange={this.handleInputChange} />
+                               value={this.state.recipe.title} onChange={this.handleInputChange} 
+                               data-testid="recipe-title-input"/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="ingredients">Ingredients</label>
@@ -96,11 +97,12 @@ export default class RecipeForm extends Component {
                             id="ingredients"
                             placeholder="Enter ingredients separated by commas"
                             value={this.state.recipe.ingredients}
-                            onChange={this.handleInputChange} />
+                            onChange={this.handleInputChange}
+                            data-testid="recipe-ingredients-input" />
                     </div>
                     <div className="form-group">
                         <button className="form-control button green" type="submit" 
-                                disabled={!this.state.formValid}>
+                                disabled={!this.state.formValid} data-testid="submit-recipe-button">
                             Submit
                         </button>
                     </div>
