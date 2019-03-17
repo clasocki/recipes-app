@@ -1,0 +1,19 @@
+.form-control {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #87ceeb;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.has-error {
+    border: 1px solid red;
+}
+
+.recipe-form {
+    border-radius: 5px;
+    background-color: #e7f5fb;
+    padding: 10px;
+}

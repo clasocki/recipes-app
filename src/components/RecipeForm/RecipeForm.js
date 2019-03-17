@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './RecipeForm.css';
-import { FormErrors } from './FormErrors';
+import '../../common/stylesheets/styles.css';
+import { FormErrors } from '../FormErrors/FormErrors';
 import PropTypes from 'prop-types';
 
 export class RecipeForm extends Component {
@@ -10,9 +11,9 @@ export class RecipeForm extends Component {
         this.state = {
             recipe: this.props.initialRecipe,
             formErrors: { title: '', ingredients: '' },
-            titleValid: false,
-            ingredientsValid: false,
-            formValid: false
+            titleValid: !this.props.isNewRecipe,
+            ingredientsValid: !this.props.isNewRecipe,
+            formValid: !this.props.isNewRecipe
         };
     }
 
@@ -118,6 +119,7 @@ export default RecipeForm;
 
 RecipeForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
+    isNewRecipe: PropTypes.bool.isRequired,
     initialRecipe: PropTypes.shape({
         id: PropTypes.number,
         title: PropTypes.string.isRequired,

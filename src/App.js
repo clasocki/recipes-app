@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import RecipeList from './components/RecipesList';
+import RecipeList from './components/RecipesList/RecipesList';
 
 class App extends Component {
   render() {

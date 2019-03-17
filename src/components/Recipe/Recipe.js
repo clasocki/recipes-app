@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import './Recipe.css';
+import '../../common/stylesheets/styles.css';
 
 export default class Recipe extends Component {
     constructor(props) {

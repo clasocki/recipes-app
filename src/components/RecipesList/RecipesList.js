@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import Recipe from './Recipe';
-import { Modal } from './Modal';
-import RecipeForm from './RecipeForm';
+import Recipe from '../Recipe/Recipe';
+import { Modal } from '../Modal/Modal';
+import RecipeForm from '../RecipeForm/RecipeForm';
 import './RecipesList.css';
 
 export class RecipeList extends Component {
@@ -147,6 +147,7 @@ export class RecipeList extends Component {
                     isOpen={this.state.isRecipeFormActive}>
                         <RecipeForm
                             initialRecipe={this.state.editedRecipe}
+                            isNewRecipe={this.state.addOrEditRecipe === 'add'}
                             onSubmit={this.onSubmitRecipe} />
                 </Modal>
             </Fragment>
