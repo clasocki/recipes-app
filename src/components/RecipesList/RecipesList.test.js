@@ -2,21 +2,24 @@ import React from 'react';
 import RecipeList from "./RecipesList";
 import { render, cleanup, fireEvent } from 'react-testing-library';
 
-const recipes = [
-    {
-        id: 0,
-        title: 'R1',
-        ingredients: ['I1', 'I2']
-    },
-    {
-        id: 1,
-        title: 'R2',
-        ingredients: ['I3']
-    }
-]
-
 describe('Recipe list tests', () => {
-    beforeEach(() => localStorage.clear());
+    const recipes = [
+        {
+            id: 0,
+            title: 'R1',
+            ingredients: ['I1', 'I2']
+        },
+        {
+            id: 1,
+            title: 'R2',
+            ingredients: ['I3']
+        }
+    ];
+
+    beforeEach(() => {
+        localStorage.clear();
+    });
+
     afterEach(cleanup);
 
     it('gets recipes when component is mounted and displays them', () => {
@@ -63,6 +66,22 @@ describe('Recipe list tests', () => {
         });
 
         const recipeList = getByTestId('recipe-list');
+        
+        expect(recipeList.children.length).toBe(1);
+    });
+
+    it('removes recipe when the Remove button is clicked', () => {
+        localStorage.setItem('recipes-app', JSON.stringify(recipes));
+        const { getByTestId } = render(<RecipeList />);
+        const recipeNode = getByTestId('recipe-item');
+
+        fireEvent.click(recipeNode);
+        const deleteBtn = getByTestId('delete-recipe-button');
+
+        const recipeList = getByTestId('recipe-list');
+        expect(recipeList.children.length).toBe(2);
+        
+        fireEvent.click(deleteBtn);
         
         expect(recipeList.children.length).toBe(1);
     });

@@ -2,23 +2,27 @@ import React from 'react';
 import Recipe from "./Recipe";
 import { render, fireEvent, cleanup } from 'react-testing-library';
 
-const recipe = {
-    id: 0,
-    title: 'R1',
-    ingredients: ['I1', 'I2']
-};
-
 describe('Recipe tests', () => {
-    afterEach(cleanup);
+    const recipe = {
+        id: 0,
+        title: 'R1',
+        ingredients: ['I1', 'I2']
+    };
 
-    it('renders ingredients when the recipe header is clicked', () => {
-        const { getByTestId, queryByText } = render(
+    let recipeRenderResult;
+    beforeEach(() => {
+        recipeRenderResult = render(
             <Recipe 
                 key={recipe.id}
                 title={recipe.title}
                 ingredients={recipe.ingredients}
                 onEdit={() => this.editRecipe(recipe.id)}
                 onDelete={() => this.deleteRecipe(recipe.id)} />);
+    });
+    afterEach(cleanup);
+
+    it('renders ingredients when the recipe header is clicked', () => {
+        const { getByTestId, queryByText } = recipeRenderResult;
     
         fireEvent.click(getByTestId('recipe-item'));
         const ingredientListNode = getByTestId('ingredient-list');
@@ -29,13 +33,7 @@ describe('Recipe tests', () => {
     });
     
     it('does not display ingredients by default', () => {
-        const { queryByText } = render(
-            <Recipe 
-                key={recipe.id}
-                title={recipe.title}
-                ingredients={recipe.ingredients}
-                onEdit={() => this.editRecipe(recipe.id)}
-                onDelete={() => this.deleteRecipe(recipe.id)} />);
+        const { queryByText } = recipeRenderResult;
         
         const ingredientNodes = recipe.ingredients.map(queryByText);
         

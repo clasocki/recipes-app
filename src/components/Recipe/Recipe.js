@@ -29,7 +29,8 @@ export default class Recipe extends Component {
                     </ul>
                 </div>
                 <div className="recipe-toolbar">
-                    <button className="button red" onClick={this.props.onDelete}>Delete</button>
+                    <button className="button red" onClick={this.props.onDelete} 
+                            data-testid="delete-recipe-button">Delete</button>
                     <button className="button blue" onClick={this.props.onEdit}>Edit</button>
                 </div>
             </div>

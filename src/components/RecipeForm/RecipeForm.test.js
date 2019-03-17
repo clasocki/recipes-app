@@ -40,6 +40,8 @@ describe('Recipe form tests', () => {
                 isNewRecipe={false}
                 onSubmit={() => {}} />);
 
+        expect(queryByText('A recipe name cannot be empty')).toBe(null);
+
         fireEvent.change(getByTestId('recipe-title-input'), {target: { value: ''}});
 
         expect(queryByText('A recipe name cannot be empty')).not.toBe(null);
@@ -51,6 +53,8 @@ describe('Recipe form tests', () => {
                 initialRecipe={recipe}
                 isNewRecipe={false}
                 onSubmit={() => {}} />);
+
+        expect(queryByText('You must provide at least one ingredient')).toBe(null);
 
         fireEvent.change(getByTestId('recipe-ingredients-input'), {target: { value: ''}});
 
@@ -64,6 +68,8 @@ describe('Recipe form tests', () => {
                 isNewRecipe={false}
                 onSubmit={() => {}} />);
 
+        expect(queryByText('Ingredient list cannot start with a comma')).toBe(null);
+
         fireEvent.change(getByTestId('recipe-ingredients-input'), {target: { value: ','}});
 
         expect(queryByText('Ingredient list cannot start with a comma')).not.toBe(null);
@@ -75,6 +81,8 @@ describe('Recipe form tests', () => {
                 initialRecipe={recipe}
                 isNewRecipe={false}
                 onSubmit={() => {}} />);
+
+        expect(queryByText('An ingredient name must contain at least one character')).toBe(null);
 
         fireEvent.change(getByTestId('recipe-ingredients-input'), {target: { value: 'a,'}});
 
