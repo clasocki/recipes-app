@@ -1,6 +1,6 @@
 import React from 'react';
 import shortid from 'shortid';
-import './FormErrors.css'
+import './FormErrors.css';
 
 export const FormErrors = ({ formErrors }) =>
     <div className='form-errors'>
@@ -14,3 +14,5 @@ export const FormErrors = ({ formErrors }) =>
             }
         })}
     </div>
+
+export default FormErrors;

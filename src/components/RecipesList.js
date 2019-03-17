@@ -4,7 +4,7 @@ import { Modal } from './Modal';
 import RecipeForm from './RecipeForm';
 import './RecipesList.css';
 
-export default class RecipeList extends Component {
+export class RecipeList extends Component {
     constructor(props) {
         super(props);
 
@@ -97,7 +97,7 @@ export default class RecipeList extends Component {
                 editedRecipe: {
                     id: undefined,
                     title: '',
-                    ingredients: ''
+                    ingredients: []
                 }
             })
         );
@@ -153,3 +153,5 @@ export default class RecipeList extends Component {
         );
     }
 }
+
+export default RecipeList;

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './RecipeForm.css';
 import { FormErrors } from './FormErrors';
+import PropTypes from 'prop-types';
 
-export default class RecipeForm extends Component {
+export class RecipeForm extends Component {
     constructor(props) {
         super(props);
 
@@ -112,3 +113,14 @@ export default class RecipeForm extends Component {
         );
     }
 }
+
+export default RecipeForm;
+
+RecipeForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    initialRecipe: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string.isRequired,
+        ingredients: PropTypes.arrayOf(PropTypes.string).isRequired
+    })
+};

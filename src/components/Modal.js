@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.css';
+import PropTypes from 'prop-types';
 
 export const Modal = ({
     closeModal,
@@ -47,3 +48,10 @@ export const Modal = ({
 };
 
 export default Modal;
+
+Modal.propTypes = {
+    closeModal: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
+    isOpen: PropTypes.bool.isRequired
+};
